@@ -2108,8 +2108,6 @@ bool RakPeer::Ping( const char* host, unsigned short remotePort, bool onlyReplyO
 
 	bitStream.WriteAlignedBytes((const unsigned char*) OFFLINE_MESSAGE_DATA_ID, sizeof(OFFLINE_MESSAGE_DATA_ID));
 
-	bitStream.Write(GetMyGUID());
-
 	// No timestamp for 255.255.255.255
 	unsigned int realIndex = GetRakNetSocketFromUserConnectionSocketIndex(connectionSocketIndex);
 	/*
@@ -4644,7 +4642,6 @@ bool ProcessOfflineNetworkPacket( SystemAddress systemAddress, const char *data,
 				inBitStream.Read(sendPingTime);
 				inBitStream.IgnoreBytes(sizeof(OFFLINE_MESSAGE_DATA_ID));
 				RakNetGUID remoteGuid=UNASSIGNED_RAKNET_GUID;
-				inBitStream.Read(remoteGuid);
 
 				RakNet::BitStream outBitStream;
 				outBitStream.Write((MessageID)ID_UNCONNECTED_PONG); // Should be named ID_UNCONNECTED_PONG eventually
