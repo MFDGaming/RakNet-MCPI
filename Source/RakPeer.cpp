@@ -4648,6 +4648,7 @@ bool ProcessOfflineNetworkPacket( SystemAddress systemAddress, const char *data,
 				outBitStream.Write(sendPingTime);
 				outBitStream.Write(rakPeer->myGuid);
 				outBitStream.WriteAlignedBytes((const unsigned char*) OFFLINE_MESSAGE_DATA_ID, sizeof(OFFLINE_MESSAGE_DATA_ID));
+                outBitStream.Write("MCCPP;Demo;Testworld");
 
 				rakPeer->rakPeerMutexes[ RakPeer::offlinePingResponse_Mutex ].Lock();
 				// They are connected, so append offline ping data
